@@ -1,206 +1,375 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f7f8f6">
-  <meta name="description" content="Evan Kinsel is an Applied Physics and Dual-Degree Engineering student at Morehouse College, building experimental systems across quantum optics, magnetometry, embedded hardware, and scientific software.">
-  <meta property="og:title" content="Evan Kinsel | Applied Physics & Systems Engineer">
-  <meta property="og:description" content="From physical phenomena to working systems. Selected research, hardware engineering, and open-source tools.">
-  <meta property="og:type" content="website">
-  <title>Evan Kinsel | Applied Physics & Systems Engineer</title>
-  <!-- Tailwind Play CDN: no install or build needed. For a production release,
-       replace this script with compiled Tailwind CSS; Play CDN is development tooling. -->
-  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <meta name="theme-color" content="#f8f6f0">
+  <meta name="description" content="Evan Kinsel is an Applied Physics and Dual-Degree Engineering student at Morehouse College, building experimental systems across quantum optics, magnetometry, and embedded hardware.">
+  <meta property="og:title" content="Evan Kinsel | Physics in Practice">
+  <meta property="og:description" content="A hands-on path through physics, hardware, and measurement.">
+  <title>Evan Kinsel | Physics in Practice</title>
   <style>
-    :root {color-scheme:light; --ink:#202b29; --muted:#56615e; --accent:#405b4b; --paper:#f7f8f6}
-    html {scroll-behavior:smooth;scroll-padding-top:100px}
-    body {margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;-webkit-font-smoothing:antialiased}
-    ::selection {background:#d8e3d7}
-    a,button {touch-action:manipulation}
-    a:focus-visible,button:focus-visible,summary:focus-visible {outline:2px solid #405b4b;outline-offset:5px}
-    button,summary {cursor:pointer}
-    .mono {font-family:'SFMono-Regular',Consolas,'Liberation Mono',monospace}
-    .eyebrow {font-family:'SFMono-Regular',Consolas,monospace;font-size:11px;line-height:1.6;letter-spacing:.13em;text-transform:uppercase}
-    .display {font-size:clamp(3.4rem,7.4vw,7rem);line-height:.98;letter-spacing:-.065em;font-weight:500}
-    .section-title {font-size:clamp(2rem,4vw,3rem);line-height:1.1;letter-spacing:-.045em;font-weight:500}
-    .body-copy {font-size:15px;line-height:1.85;color:var(--muted)}
-    .tag {padding:5px 9px;border:1px solid #d9dfd9;font-family:Consolas,monospace;font-size:11px;line-height:1.4;color:#4b5851}
-    .text-link {display:inline-flex;align-items:center;gap:16px;font-size:13px;font-weight:600;border-bottom:1px solid #9daaa1;padding-bottom:6px;text-decoration:none}
-    .text-link:hover {color:#527559;border-color:currentColor}
-    .paper-grid {background-image:linear-gradient(#dce2dc55 1px,transparent 1px),linear-gradient(90deg,#dce2dc55 1px,transparent 1px);background-size:24px 24px}
-    .nav-link[aria-current="location"] {color:#263e2e;border-bottom-color:#405b4b}
-    .nav-link {border-bottom:1px solid transparent;padding:8px 0}
-    .skip-link {position:fixed;top:-100px;left:16px;z-index:100;background:white;padding:12px}
-    .skip-link:focus {top:12px}
-    details[open] summary .plus {transform:rotate(45deg)}
-    summary {list-style:none} summary::-webkit-details-marker {display:none}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important}}
-    @media print {header,.no-print{display:none!important}body{background:white}main{max-width:none!important}section,article{break-inside:avoid}a{color:inherit}details .body-copy{display:block}}
+    :root {
+      color-scheme: light;
+      --paper: #f8f6f0;
+      --paper-deep: #eee9dc;
+      --ink: #252b24;
+      --muted: #62685e;
+      --line: #d7d2c5;
+      --green: #496b52;
+      --green-light: #e4e9df;
+      --rust: #ba6846;
+      --rust-light: #f2e4d9;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --page: 1080px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 6rem; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-underline-offset: .22em; }
+    a:hover { color: var(--green); }
+    a:focus-visible, summary:focus-visible { outline: 2px solid var(--rust); outline-offset: 4px; }
+    img { max-width: 100%; height: auto; }
+    .wrap { width: min(calc(100% - 40px), var(--page)); margin-inline: auto; }
+    .topbar { border-bottom: 1px solid var(--line); }
+    .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; min-height: 72px; }
+    .brand { text-decoration: none; font-family: var(--serif); font-size: 20px; letter-spacing: -.03em; }
+    .brand span { color: var(--rust); }
+    .nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 22px; font-size: 13px; }
+    .nav a { text-decoration: none; color: var(--muted); }
+    .nav a:hover { color: var(--ink); }
+    .hero { display: grid; grid-template-columns: 1.3fr .7fr; align-items: center; gap: 60px; padding-block: 82px 74px; }
+    .eyebrow { margin: 0 0 14px; color: var(--green); font-size: 12px; font-weight: 650; letter-spacing: .09em; text-transform: uppercase; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { max-width: 700px; margin-bottom: 20px; font-family: var(--serif); font-size: clamp(48px, 7vw, 84px); font-weight: 400; letter-spacing: -.055em; line-height: .99; }
+    h1 em { color: var(--green); font-weight: 400; }
+    .intro { max-width: 620px; margin-bottom: 25px; color: var(--muted); font-size: 18px; line-height: 1.7; }
+    .hero-meta { margin-bottom: 27px; color: var(--muted); font-size: 14px; }
+    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; }
+    .button { display: inline-flex; align-items: center; gap: 12px; padding: 12px 17px; border: 1px solid var(--green); border-radius: 3px; background: var(--green); color: white; font-size: 14px; text-decoration: none; }
+    .button:hover { background: #38563f; color: white; }
+    .quiet-link { font-size: 14px; }
+    .sketch { padding: 23px 20px 18px; border: 1px solid var(--line); border-radius: 3px; background: #f2efe7; transform: rotate(1deg); }
+    .sketch svg { display: block; width: 100%; height: auto; }
+    .sketch-note { margin: 14px 0 0; color: var(--muted); font-family: var(--serif); font-size: 16px; font-style: italic; }
+    .honor-strip { display: flex; flex-wrap: wrap; gap: 9px 22px; padding: 17px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    .honor-strip strong { color: var(--ink); font-weight: 600; }
+    section { padding-block: 74px; }
+    .section-head { display: grid; grid-template-columns: 220px 1fr; align-items: start; gap: 34px; margin-bottom: 35px; }
+    .section-label { margin: 7px 0 0; color: var(--rust); font-size: 12px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
+    h2 { margin-bottom: 12px; font-family: var(--serif); font-size: clamp(34px, 4.8vw, 50px); font-weight: 400; letter-spacing: -.045em; line-height: 1.05; }
+    .section-lede { max-width: 650px; margin: 0; color: var(--muted); font-size: 16px; line-height: 1.75; }
+    .timeline { position: relative; margin-left: 5px; padding-left: 34px; border-left: 1px solid #b9c5b2; }
+    .timeline-item { position: relative; display: grid; grid-template-columns: 190px 1fr; gap: 25px; padding: 0 0 43px; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-item::before { position: absolute; top: 5px; left: -40px; width: 11px; height: 11px; border: 2px solid var(--paper); border-radius: 50%; background: var(--rust); content: ""; box-shadow: 0 0 0 1px var(--rust); }
+    .timeline-date { color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .timeline-date span { display: block; margin-top: 5px; color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+    .timeline-item h3 { margin-bottom: 4px; font-family: var(--serif); font-size: 26px; font-weight: 400; letter-spacing: -.03em; }
+    .timeline-role { margin-bottom: 12px; color: var(--green); font-size: 14px; font-weight: 600; }
+    .timeline-item p:last-child { max-width: 650px; margin-bottom: 0; color: var(--muted); font-size: 15px; line-height: 1.7; }
+    .callout { display: inline-block; margin-top: 13px; padding: 7px 10px; border-radius: 2px; background: var(--rust-light); color: #75452f; font-size: 12px; }
+    .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 55px; }
+    .work-item { padding-top: 20px; border-top: 1px solid var(--line); }
+    .work-item h3 { margin-bottom: 7px; font-family: var(--serif); font-size: 29px; font-weight: 400; letter-spacing: -.03em; }
+    .work-meta { margin-bottom: 18px; color: var(--green); font-size: 13px; }
+    .body-copy { color: var(--muted); font-size: 15px; line-height: 1.75; }
+    .fact-line { display: flex; flex-wrap: wrap; gap: 18px; margin: 23px 0; padding-block: 15px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+    .fact { flex: 1 1 130px; }
+    .fact strong { display: block; font-family: var(--serif); font-size: 30px; font-weight: 400; }
+    .fact span { color: var(--muted); font-size: 12px; }
+    details { margin-top: 18px; border-top: 1px solid var(--line); }
+    summary { padding: 13px 0; cursor: pointer; font-size: 14px; font-weight: 600; }
+    details .body-copy { padding-bottom: 10px; }
+    .poster { padding: 10px; border: 1px solid var(--line); background: #fff; }
+    .poster img { display: block; width: 100%; max-height: 520px; object-fit: contain; object-position: top; }
+    .record { display: flex; justify-content: flex-end; margin-top: 13px; font-size: 13px; }
+    .workflow { display: flex; flex-wrap: wrap; align-items: stretch; gap: 7px; margin-top: 22px; }
+    .workflow span { flex: 1 1 120px; display: flex; align-items: center; justify-content: center; min-height: 65px; padding: 10px; background: var(--green-light); color: #344e39; text-align: center; font-size: 13px; line-height: 1.4; }
+    .workflow b { align-self: center; color: var(--rust); font-size: 17px; }
+    .project-list { border-top: 1px solid var(--line); }
+    .project { display: grid; grid-template-columns: 210px 1fr 145px; gap: 25px; align-items: start; padding: 24px 0; border-bottom: 1px solid var(--line); }
+    .project h3 { margin: 0; font-family: var(--serif); font-size: 25px; font-weight: 400; }
+    .project p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+    .project a { font-size: 13px; white-space: nowrap; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 12px; }
+    .tags span { padding: 4px 8px; border: 1px solid var(--line); border-radius: 20px; color: var(--muted); font-size: 11px; }
+    .summit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 38px; }
+    .summit { padding: 20px 0 0; border-top: 1px solid var(--line); }
+    .summit h3 { margin-bottom: 6px; font-family: var(--serif); font-size: 26px; font-weight: 400; }
+    .summit-meta { margin-bottom: 14px; color: var(--green); font-size: 13px; }
+    .summit p { margin-bottom: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .background { display: grid; grid-template-columns: 220px 1fr; gap: 34px; border-top: 1px solid var(--line); }
+    .background-group { padding-block: 22px; border-bottom: 1px solid var(--line); }
+    .background-group h3 { margin-bottom: 9px; font-family: var(--serif); font-size: 24px; font-weight: 400; }
+    .background-group p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.7; }
+    .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 27px; }
+    .skill-group { padding: 19px; background: var(--paper-deep); }
+    .skill-group h3 { margin-bottom: 12px; color: var(--green); font-size: 14px; }
+    .skill-group p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    .contact { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 35px; padding: 35px; background: var(--green); color: #fbf9f3; }
+    .contact h2 { margin-bottom: 10px; font-size: clamp(32px, 4vw, 44px); }
+    .contact p { margin: 0; color: #e1e9dd; font-size: 14px; line-height: 1.6; }
+    .contact-links { display: flex; flex-wrap: wrap; gap: 18px; font-size: 14px; }
+    .contact a { color: white; }
+    footer { display: flex; justify-content: space-between; gap: 20px; padding-block: 23px 30px; color: var(--muted); font-size: 12px; }
+    footer p { margin: 0; }
+    @media (max-width: 720px) {
+      .wrap { width: min(calc(100% - 30px), var(--page)); }
+      .topbar-inner { align-items: flex-start; flex-direction: column; justify-content: center; gap: 12px; padding-block: 15px; }
+      .nav { justify-content: flex-start; gap: 9px 17px; font-size: 12px; }
+      .hero { grid-template-columns: 1fr; gap: 34px; padding-block: 55px 45px; }
+      .sketch { max-width: 440px; }
+      section { padding-block: 55px; }
+      .section-head, .background { grid-template-columns: 1fr; gap: 12px; }
+      .section-label { margin-top: 0; }
+      .timeline-item { grid-template-columns: 1fr; gap: 7px; padding-bottom: 34px; }
+      .work-grid, .summit-grid { grid-template-columns: 1fr; gap: 33px; }
+      .project { grid-template-columns: 1fr auto; gap: 8px 15px; }
+      .project p { grid-column: 1 / -1; grid-row: 2; }
+      .project a { grid-column: 2; grid-row: 1; }
+      .skills { grid-template-columns: 1fr; gap: 12px; }
+      .contact { grid-template-columns: 1fr; padding: 25px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   </style>
 </head>
 <body>
-<a href="#main" class="skip-link">Skip to main content</a>
-<!-- NAVIGATION: all internal destinations are on this page; no framework or router. -->
-<header class="sticky top-0 z-40 border-b border-[#dce1db] bg-[#f7f8f6]/95 backdrop-blur-md">
-  <div class="mx-auto flex max-w-[1240px] items-center justify-between px-6 py-5 md:px-10">
-    <a href="#home" aria-label="Evan Kinsel, back to top" class="flex items-center gap-3 text-sm font-semibold tracking-tight"><span class="flex h-8 w-8 items-center justify-center border border-[#b9c4bb] text-xs">EK<span class="text-[#587157]">.</span></span><span>Evan Kinsel</span></a>
-    <nav aria-label="Main navigation" class="hidden items-center gap-7 text-xs text-[#56615e] md:flex">
-      <a class="nav-link" href="#research">Research & work</a><a class="nav-link" href="#projects">Open source</a><a class="nav-link" href="#summits">Industry summits</a><a class="nav-link" href="#about">Background</a><a class="text-link !pb-1" href="#contact">Let’s connect <span aria-hidden="true">↗</span></a>
-    </nav>
-    <button id="menu-toggle" aria-expanded="false" aria-controls="mobile-menu" class="border border-[#cbd3cb] px-3 py-2 text-xs md:hidden">Menu <span aria-hidden="true">+</span></button>
-  </div>
-  <nav id="mobile-menu" aria-label="Mobile navigation" hidden class="border-t border-[#dce1db] px-6 pb-5 md:!hidden">
-    <a class="block py-3 text-sm" href="#research">Research & work</a><a class="block py-3 text-sm" href="#projects">Open source</a><a class="block py-3 text-sm" href="#summits">Industry summits</a><a class="block py-3 text-sm" href="#about">Background</a><a class="block py-3 text-sm" href="#contact">Let’s connect ↗</a>
-  </nav>
-</header>
-<main id="main" class="mx-auto max-w-[1240px] px-6 md:px-10">
-  <!-- 01 / HERO -->
-  <section id="home" aria-labelledby="hero-title" class="pb-16 pt-14 md:pb-20 md:pt-20">
-    <div class="mb-10 flex flex-wrap items-center justify-between gap-4">
-      <p class="eyebrow flex items-center gap-2 text-[#4d6353]"><span aria-hidden="true" class="h-1.5 w-1.5 rounded-full bg-[#537653]"></span> Experimental physics. Practical engineering.</p>
-      <span class="eyebrow text-[#6e7771]">Atlanta, GA / Morehouse College</span>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#top">Evan Kinsel<span>.</span></a>
+      <nav class="nav" aria-label="Main navigation">
+        <a href="#journey">My path</a>
+        <a href="#work">Research & work</a>
+        <a href="#projects">Projects</a>
+        <a href="#background">A little more</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </div>
-    <div class="grid gap-12 lg:grid-cols-[1.65fr_1fr] lg:gap-16">
+  </header>
+  <main id="top" class="wrap">
+    <section class="hero" aria-labelledby="hero-title">
       <div>
-        <p class="mb-5 text-sm text-[#56615e]">Evan Kinsel</p>
-        <h1 id="hero-title" class="display">Applied Physics<br><span class="text-[#6b7b6b]">& Systems</span><br>Engineer<span class="text-[#6b7b6b]">.</span></h1>
-        <p class="mt-7 max-w-[540px] text-base leading-relaxed text-[#56615e]">I bridge experimental physics and embedded hardware, building the instruments, controls, and data pipelines that turn optical and magnetic phenomena into measurable results.</p>
-        <p class="mt-4 text-xs leading-relaxed text-[#657064]">Undergraduate, Applied Physics & Dual-Degree Engineering<br class="sm:hidden"> · Morehouse College ’29</p>
-        <div class="mt-8 flex flex-wrap items-center gap-6">
-          <a href="#research" class="inline-flex items-center gap-9 bg-[#293d31] px-6 py-3.5 text-sm text-white transition-colors hover:bg-[#45614c]">Explore my work <span aria-hidden="true">↓</span></a>
-          <a href="https://github.com/evankinsel" target="_blank" rel="noopener noreferrer" class="text-link">GitHub <span aria-hidden="true">↗</span></a>
+        <p class="eyebrow">Applied physics student · Morehouse College</p>
+        <h1 id="hero-title">I like figuring out how the physical world <em>works.</em></h1>
+        <p class="intro">I’m Evan, an Applied Physics and Dual-Degree Engineering student. I build and test instruments that turn questions about light, magnetism, and motion into measurements we can use.</p>
+        <p class="hero-meta">Atlanta, Georgia · Class of 2029</p>
+        <div class="actions">
+          <a class="button" href="#journey">A few stops along the way <span aria-hidden="true">↓</span></a>
+          <a class="quiet-link" href="https://github.com/evankinsel" target="_blank" rel="noopener noreferrer">Find me on GitHub ↗</a>
         </div>
       </div>
-      <aside aria-labelledby="honors-title" class="flex flex-col self-end border border-[#d8dfd5] bg-[#eef1ea] p-7 md:p-8">
-        <div class="mb-8 flex items-center justify-between"><h2 id="honors-title" class="eyebrow text-[#52634f]">Distinguished honors</h2><svg aria-hidden="true" width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="#697b5f"><circle cx="14" cy="10" r="6"/><path d="m10 15-2 10 6-3 6 3-2-10M14 6v8M10 10h8"/></svg></div>
-        <div class="border-b border-[#d2dacd] pb-6"><p class="eyebrow mb-2 text-[#6c7867]">01 / Service & leadership</p><h3 class="text-2xl tracking-tight">Eagle Scout</h3><p class="mt-1 text-sm text-[#56615e]">with Palm Distinction</p></div>
-        <div class="border-b border-[#d2dacd] py-6"><p class="eyebrow mb-2 text-[#6c7867]">02 / National recognition</p><h3 class="text-2xl leading-tight tracking-tight">U.S. Congressional<br>Gold Medal Award</h3></div>
-        <div class="pt-6"><p class="eyebrow mb-2 text-[#6c7867]">03 / Academic distinction</p><h3 class="text-xl tracking-tight">Howard Thurman</h3><p class="mt-1 text-sm text-[#56615e]">Honors Scholar · Morehouse College</p><!-- The supplied resumes verify Honors Scholar status. Use “Honors Scholarship” only if the award documentation confirms that exact name. --></div>
-        <p class="mt-8 border-t border-[#d2dacd] pt-5 text-xs leading-relaxed text-[#66735e]">A foundation in service. A commitment to building things that matter.</p>
-      </aside>
+      <figure class="sketch">
+        <svg viewBox="0 0 330 210" role="img" aria-labelledby="sketch-title sketch-desc">
+          <title id="sketch-title">A small drawing of a light measurement setup</title>
+          <desc id="sketch-desc">A laser beam meets a beam splitter and travels toward two photon detectors.</desc>
+          <path d="M24 103 C57 101 72 104 105 102" fill="none" stroke="#ba6846" stroke-width="3" stroke-linecap="round" />
+          <path d="M106 80 L128 102 L106 124 L84 102 Z" fill="#f8f6f0" stroke="#496b52" stroke-width="2.5" stroke-linejoin="round" />
+          <path d="M128 102 C164 102 182 101 211 101" fill="none" stroke="#ba6846" stroke-width="3" stroke-linecap="round" />
+          <path d="M105 80 C142 56 165 46 203 43" fill="none" stroke="#ba6846" stroke-width="2.7" stroke-linecap="round" />
+          <rect x="212" y="82" width="74" height="38" rx="4" fill="#e4e9df" stroke="#496b52" stroke-width="2" />
+          <rect x="206" y="25" width="74" height="38" rx="4" fill="#f2e4d9" stroke="#ba6846" stroke-width="2" />
+          <circle cx="225" cy="101" r="5" fill="#496b52" /><circle cx="219" cy="44" r="5" fill="#ba6846" />
+          <text x="24" y="88" fill="#62685e" font-size="12" font-family="system-ui">light in</text>
+          <text x="91" y="153" fill="#62685e" font-size="12" font-family="system-ui">split</text>
+          <text x="219" y="140" fill="#62685e" font-size="11" font-family="system-ui">detector A</text>
+          <text x="212" y="80" fill="#62685e" font-size="11" font-family="system-ui">detector B</text>
+          <path d="M38 178 C89 170 117 185 162 172 S237 166 288 175" fill="none" stroke="#89977e" stroke-width="1.5" stroke-dasharray="3 6" stroke-linecap="round" />
+        </svg>
+        <figcaption class="sketch-note">A lot of the fun is getting the setup to behave.</figcaption>
+      </figure>
+    </section>
+
+    <div class="honor-strip" aria-label="Honors">
+      <strong>Eagle Scout, Palm Distinction</strong>
+      <span>U.S. Congressional Gold Medal Award</span>
+      <span>Howard Thurman Honors Scholar</span>
     </div>
-  </section>
-  <!-- 02 / SKILLS: edit individual list items to maintain this three-column matrix. -->
-  <section id="skills" aria-labelledby="skills-title" class="border-y border-[#d4dcd3] py-10">
-    <div class="mb-8 flex flex-wrap items-baseline justify-between gap-3"><h2 id="skills-title" class="eyebrow">Technical toolkit</h2><p class="text-xs text-[#6e7771]">From acquisition to analysis to physical implementation.</p></div>
-    <div class="grid gap-8 md:grid-cols-3 md:gap-10">
-      <div><h3 class="mb-4 flex items-center gap-3 text-sm font-semibold"><span class="mono text-xs text-[#7a8878]">01</span> Hardware & CAD</h3><ul class="space-y-2 text-sm leading-relaxed text-[#56615e]"><li>Embedded systems · ESP32, Arduino</li><li>I²C integration · Stepper / servo controls</li><li>FDM / SLA 3D printing · Onshape · Fusion 360</li></ul></div>
-      <div class="md:border-l md:border-[#d4dcd3] md:pl-8"><h3 class="mb-4 flex items-center gap-3 text-sm font-semibold"><span class="mono text-xs text-[#7a8878]">02</span> Experimental labs</h3><ul class="space-y-2 text-sm leading-relaxed text-[#56615e]"><li>Quantum optics · Optical alignment</li><li>Hanbury Brown–Twiss arrays · SPADs</li><li>Spatial field mapping · Photon counting</li></ul></div>
-      <div class="md:border-l md:border-[#d4dcd3] md:pl-8"><h3 class="mb-4 flex items-center gap-3 text-sm font-semibold"><span class="mono text-xs text-[#7a8878]">03</span> Data & programming</h3><ul class="space-y-2 text-sm leading-relaxed text-[#56615e]"><li>Python · NumPy, SciPy, Matplotlib</li><li>C++ · Plotly.js · Open3D</li><li>Git / GitHub · LaTeX</li></ul></div>
-    </div>
-  </section>
-  <!-- 03 / CASE STUDIES: intentionally no proprietary charts, geometries, or raw data. -->
-  <section id="research" aria-labelledby="research-title" class="py-20 md:py-24">
-    <div class="mb-12 flex flex-wrap items-end justify-between gap-5"><div><p class="eyebrow mb-4 text-[#6a7867]">01 / Selected research & engineering</p><h2 id="research-title" class="section-title">Built. Measured. Understood.</h2></div><p class="max-w-[250px] text-sm leading-relaxed text-[#6a756a]">Physical systems, deliberate experiments,<br class="hidden md:block"> and traceable analysis.</p></div>
-    <article aria-labelledby="optics-title" class="border-t border-[#bbc6b9] py-10">
-      <div class="mb-8 flex flex-wrap items-center justify-between gap-3"><p class="eyebrow text-[#4c634e]">Case study 01 / Quantum optics</p><p class="mono text-[11px] text-[#687466]">M.O.R.E. Lab · Sep 2026–present</p></div>
-      <div class="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
-        <div><h3 id="optics-title" class="max-w-xl text-3xl leading-tight tracking-[-.035em] md:text-[38px]">From photon arrivals<br>to raw random bits.</h3><p class="mt-4 text-sm text-[#6a756a]">Undergraduate Research Assistant · Advisor: Dr. Wesley Sims</p>
-          <p class="body-copy mt-6">I conceived and led a faculty-supervised investigation of a 405 nm diode laser, asking how drive current and mount temperature affect photon-arrival statistics and timing-based bit extraction.</p>
-          <p class="body-copy mt-4">Using a two-detector Hanbury Brown–Twiss configuration, I measured the split optical signal with single-photon avalanche detectors and Swabian Instruments time-tagging hardware. Controlled sweeps from 15–34 mA at 20, 25, and 30 °C combined triplicate measurements, thermal stabilization, and laser-off baseline controls.</p>
-          <div class="my-7 grid grid-cols-2 border-y border-[#d4dcd3] py-5"><div><p class="text-2xl tracking-tight sm:text-3xl">64.14<span class="ml-1 text-lg text-[#75816f]">M</span></p><p class="mt-2 text-xs text-[#65705f]">Raw bits extracted & evaluated</p></div><div class="border-l border-[#d4dcd3] pl-6"><p class="text-2xl tracking-tight sm:text-3xl">50.0033<span class="text-lg text-[#75816f]">%</span></p><p class="mt-2 text-xs text-[#65705f]">Observed fraction of ones</p></div></div>
-          <details class="border-b border-[#d4dcd3] pb-4"><summary class="flex items-center justify-between gap-5 text-sm font-semibold">Analysis & scientific limits <span class="plus text-xl font-normal transition-transform" aria-hidden="true">+</span></summary><div class="body-copy pt-4"><p>I characterized detection rates, second-order intensity correlations g²(τ), and interarrival-time distributions, then evaluated next-bit prediction under held-out testing. Prediction accuracy remained approximately 50% for the tested methods.</p><p class="mt-3">These results characterize the measured source and extraction procedure. Bit balance and the tested prediction baselines do not establish cryptographic security or certify entropy.</p><p class="mt-3">I presented the work at the Morehouse Fall 2026 STEM Research Symposium and authored laboratory procedures to support reproducible undergraduate optics experiments.</p></div></details>
+
+    <section id="journey" aria-labelledby="journey-title">
+      <div class="section-head">
+        <p class="section-label">How I got here</p>
+        <div>
+          <h2 id="journey-title">Three projects, one growing question.</h2>
+          <p class="section-lede">I started with a school build, then stepped into magnetometry, and found my way to experimental optics. Each stop gave me a new kind of problem to learn from.</p>
         </div>
-        <div class="flex flex-col">
-          <div class="grow border border-[#d4dcd3] bg-white p-2">
-            <img src="evan-kinsel-hbt-poster-preview.webp" alt="Research poster: Thermal and Temporal Characterization of a 405 nm Diode Laser for Random Bit Generation" width="1800" height="1393" loading="lazy" class="mx-auto h-full max-h-[560px] w-full object-contain object-top">
+      </div>
+      <div class="timeline">
+        <article class="timeline-item">
+          <div class="timeline-date">August 2024 - May 2025<span>High school capstone</span></div>
+          <div>
+            <h3>Pothole repair robot</h3>
+            <p class="timeline-role">Gainesville High School · PLTW Honors Engineering</p>
+            <p>My capstone team designed and built an autonomous pothole repair robot. I worked through the gap between a promising concept and a machine we could actually test, including design tradeoffs and a lower-cost build plan.</p>
+            <span class="callout">Projected build cost reduced 78.7%</span>
           </div>
-          <div class="mt-5 flex justify-end"><a class="text-link" href="https://doi.org/10.5281/zenodo.23651002" target="_blank" rel="noopener noreferrer">View research record <span aria-hidden="true">↗</span></a></div>
+        </article>
+        <article class="timeline-item">
+          <div class="timeline-date">June - August 2026<span>Hardware R&D</span></div>
+          <div>
+            <h3>QuantCAD LLC</h3>
+            <p class="timeline-role">Quantum Systems Engineering Intern · Chicago, Illinois</p>
+            <p>I brought a broken calibration setup back to useful measurements by tracing motor, cable, sensor, and feedback conflicts. I then worked on magnetic-field mapping and gradient design, processing more than 9,000 thermal-test data points.</p>
+            <span class="callout">Gradient geometry improved 61% · process details kept private</span>
+          </div>
+        </article>
+        <article class="timeline-item">
+          <div class="timeline-date">September 2026 - present<span>Undergraduate research</span></div>
+          <div>
+            <h3>M.O.R.E. Lab, Morehouse College</h3>
+            <p class="timeline-role">Undergraduate Research Assistant · Quantum optics</p>
+            <p>I conceived and led a study of a 405 nm diode laser with a two-detector Hanbury Brown–Twiss setup. The work connects optical alignment and photon timing to reproducible analysis of raw bit streams.</p>
+            <span class="callout">Poster presented at Morehouse Fall 2026 STEM Research Symposium</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="work" aria-labelledby="work-title">
+      <div class="section-head">
+        <p class="section-label">A closer look</p>
+        <div>
+          <h2 id="work-title">Research & engineering work</h2>
+          <p class="section-lede">I care about the whole chain: the physical setup, the control and acquisition, and the analysis that tells us what happened.</p>
         </div>
       </div>
-    </article>
-    <article aria-labelledby="quantcad-title" class="mt-8 border-t border-[#bbc6b9] pt-10">
-      <div class="mb-8 flex flex-wrap items-center justify-between gap-3"><p class="eyebrow text-[#4c634e]">Case study 02 / Magnetometry</p><p class="mono text-[11px] text-[#687466]">QuantCAD LLC · Jun–Aug 2026</p></div>
-      <div class="grid gap-10 lg:grid-cols-[1.15fr_1fr] lg:gap-16">
-        <div><h3 id="quantcad-title" class="text-3xl leading-tight tracking-[-.035em] md:text-[38px]">Restoring the measurement.<br>Improving the design.</h3><p class="mt-4 text-sm text-[#6a756a]">Quantum Systems Engineering Intern · Chicago, IL</p>
-          <p class="body-copy mt-6">I restored an inherited rotational magnetometry platform by working through sensor, cabling, mechanical, and stepper-motor control faults. I isolated the acquisition and motion subsystems, resolved integration conflicts, and re-established coordinated scanning and sensor readout.</p>
-          <p class="body-copy mt-4">With the platform operating, I collected more than 2,500 time-aligned three-axis measurements through automated 360° scans. Python workflows supported field-vector analysis, heading calculations, statistical characterization, and comparison with models.</p>
-          <p class="body-copy mt-4">In related work, I improved a magnetic-field gradient design by 61%, fabricated experimental fixtures and sensor mounts, and supported thermal testing across 9,000+ measurement points.</p>
-          <p class="mt-5 border-l-2 border-[#9bac92] pl-4 text-xs leading-relaxed text-[#6b7667]">Process-level summary. Company datasets, internal plots, dimensions, and implementation-specific geometry are omitted.</p>
-        </div>
-        <div class="bg-[#e9ede6] p-7 md:p-8">
-          <p class="eyebrow mb-7 text-[#52634b]">Abstracted measurement workflow</p>
-          <!-- TEXT-BASED BLOCK DIAGRAM: generic workflow only; no corporate architecture or values. -->
-          <ol class="space-y-3" aria-label="Measurement workflow in acquisition order">
-            <li class="flex items-center gap-4 border border-[#c9d2c3] bg-[#f7f8f6] px-4 py-3"><span class="mono text-xs text-[#78866c]">01</span><div><p class="text-sm font-semibold">Motion command</p><p class="mt-1 text-xs text-[#65715f]">Control the scan position</p></div><span class="ml-auto text-[#7b8b71]" aria-hidden="true">↓</span></li>
-            <li class="flex items-center gap-4 border border-[#c9d2c3] bg-[#f7f8f6] px-4 py-3"><span class="mono text-xs text-[#78866c]">02</span><div><p class="text-sm font-semibold">Sensor acquisition</p><p class="mt-1 text-xs text-[#65715f]">Capture three-axis field readings</p></div><span class="ml-auto text-[#7b8b71]" aria-hidden="true">↓</span></li>
-            <li class="flex items-center gap-4 border border-[#c9d2c3] bg-[#f7f8f6] px-4 py-3"><span class="mono text-xs text-[#78866c]">03</span><div><p class="text-sm font-semibold">Aligned measurement log</p><p class="mt-1 text-xs text-[#65715f]">Associate readings with scan position</p></div><span class="ml-auto text-[#7b8b71]" aria-hidden="true">↓</span></li>
-            <li class="flex items-center gap-4 border border-[#c9d2c3] bg-[#293d31] px-4 py-3 text-white"><span class="mono text-xs text-[#b8c6af]">04</span><div><p class="text-sm font-semibold">Analysis & validation</p><p class="mt-1 text-xs text-[#d0d9cb]">Evaluate repeatability and design behavior</p></div><span class="ml-auto" aria-hidden="true">✓</span></li>
-          </ol>
-          <p class="mt-6 text-xs leading-relaxed text-[#64715c]">A repeatable engineering loop: isolate the fault, restore acquisition, characterize the system, then evaluate the design.</p>
+      <div class="work-grid">
+        <article class="work-item">
+          <p class="eyebrow">Quantum optics · Morehouse</p>
+          <h3>Following photons to raw bits</h3>
+          <p class="work-meta">405 nm diode laser · HBT measurement · Swabian Instruments time tagger</p>
+          <p class="body-copy">I swept laser drive current from 15 to 34 mA at 20, 25, and 30 °C, using a 50/50 beam splitter and two single-photon avalanche detectors. Repeated runs and laser-off baselines helped separate the measurement from setup drift and background counts.</p>
+          <div class="fact-line">
+            <div class="fact"><strong>64.14M</strong><span>raw bits evaluated</span></div>
+            <div class="fact"><strong>50.0033%</strong><span>observed fraction of ones</span></div>
+          </div>
+          <details>
+            <summary>More on the analysis and its limits</summary>
+            <div class="body-copy">
+              <p>I examined detection rates, second-order intensity correlations g²(τ), and interarrival-time distributions. Held-out prediction checks stayed close to 50% for the methods tested.</p>
+              <p>These results characterize this source and extraction procedure. Bit balance and the tested baselines do not establish cryptographic security or certify entropy.</p>
+              <p>I also authored laboratory procedures to support repeatable undergraduate optics experiments.</p>
+            </div>
+          </details>
+        </article>
+        <div>
+          <figure class="poster">
+            <img src="evan-kinsel-hbt-poster-preview.webp" alt="Research poster: Thermal and Temporal Characterization of a 405 nm Diode Laser for Random Bit Generation" width="1800" height="1393" loading="lazy">
+          </figure>
+          <p class="record"><a href="https://doi.org/10.5281/zenodo.23651002" target="_blank" rel="noopener noreferrer">View the open-science record ↗</a></p>
         </div>
       </div>
-    </article>
-  </section>
-  <!-- 04 / PUBLIC REPOSITORIES: verified public URLs. No private source is bundled. -->
-  <section id="projects" aria-labelledby="projects-title" class="border-t border-[#bbc6b9] py-20">
-    <div class="mb-10 flex flex-wrap items-end justify-between gap-5"><div><p class="eyebrow mb-4 text-[#6a7867]">02 / Open-source tools</p><h2 id="projects-title" class="section-title">Less friction at the bench.</h2></div><a href="https://github.com/evankinsel" target="_blank" rel="noopener noreferrer" class="text-link">GitHub profile <span aria-hidden="true">↗</span></a></div>
-    <div class="grid gap-6 md:grid-cols-2">
-      <article class="flex flex-col border border-[#d4dcd3] bg-white p-7 md:p-9"><div class="mb-8 flex items-center justify-between"><span class="mono text-xs text-[#687660]">01 / Scientific software</span><span class="mono text-lg text-[#829077]" aria-hidden="true">{ }</span></div><h3 class="text-3xl tracking-tight">MagPlotter</h3><p class="mt-2 text-xs text-[#697662]">Magnetometer processing & spatial field characterization</p><p class="body-copy mt-5">A Python analysis pipeline that turns raw sensor CSVs into consistent engineering reports. I developed the workflow with AI assistance to reduce repetitive cleaning and plotting between measurement runs.</p><ul class="body-copy mb-7 mt-4 list-disc space-y-2 pl-4 marker:text-[#8c9b83]"><li>Clean logs, calculate field vectors, and evaluate circular statistics and heading drift.</li><li>Interpolate spatial grids with SciPy for field characterization.</li><li>Report peak field, uniformity, magnetic center, and 180° symmetry scoring.</li></ul><ul aria-label="MagPlotter technologies" class="mb-8 mt-auto flex flex-wrap gap-2"><li class="tag">Python</li><li class="tag">NumPy</li><li class="tag">SciPy</li><li class="tag">Matplotlib</li></ul><a class="text-link self-start" href="https://github.com/evankinsel/magplotter" target="_blank" rel="noopener noreferrer">Explore MagPlotter <span aria-hidden="true">↗</span></a></article>
-      <article class="flex flex-col border border-[#d4dcd3] bg-white p-7 md:p-9"><div class="mb-8 flex items-center justify-between"><span class="mono text-xs text-[#687660]">02 / Embedded sensing</span><span class="eyebrow text-[#637458]">In development</span></div><h3 class="text-3xl tracking-tight">Desktop 3D LiDAR</h3><p class="mt-2 text-xs text-[#697662]">Embedded acquisition → live point-cloud visualization</p><p class="body-copy mt-5">An ESP32-based scanner connecting distance and orientation sensing to a live Python pipeline. The project explores how sensor validation and coordinate transforms shape usable spatial measurements.</p><ul class="body-copy mb-7 mt-4 list-disc space-y-2 pl-4 marker:text-[#8c9b83]"><li>Integrate VL53L0X time-of-flight sensing, a BNO055 IMU, and an SSD1306 OLED over I²C.</li><li>Prototype polar-to-Cartesian conversion and orientation-aware XYZ capture with manual pan and tilt.</li><li>Stream serial measurements to Open3D, apply voxel downsampling, and export .PLY point clouds.</li></ul><ul aria-label="LiDAR technologies" class="mb-8 mt-auto flex flex-wrap gap-2"><li class="tag">ESP32 / C++</li><li class="tag">I²C</li><li class="tag">pyserial</li><li class="tag">Open3D</li></ul><a class="text-link self-start" href="https://github.com/evankinsel/lidar" target="_blank" rel="noopener noreferrer">Explore LiDAR scanner <span aria-hidden="true">↗</span></a></article>
-    </div>
-  </section>
-  <!-- 05 / INDUSTRY SUMMITS. Honeywell is a selection, not completed attendance as of October 2026.
-       The Chevron revenue figure is a case-competition projection, not realized company revenue. -->
-  <section id="summits" aria-labelledby="summits-title" class="border-t border-[#bbc6b9] py-20">
-    <div class="mb-10 flex flex-wrap items-end justify-between gap-5">
-      <div><p class="eyebrow mb-4 text-[#6a7867]">03 / Industry summits & leadership</p><h2 id="summits-title" class="section-title">Engineering beyond the lab.</h2></div>
-      <p class="max-w-[290px] text-sm leading-relaxed text-[#6a756a]">Selected experiences connecting technical work, commercial decisions, and leadership.</p>
-    </div>
-    <div class="grid gap-6 lg:grid-cols-[1fr_1.25fr]">
-      <article aria-labelledby="honeywell-title" class="border border-[#d4dcd3] bg-[#eef1ea] p-7 md:p-9">
-        <div class="mb-7 flex flex-wrap items-center justify-between gap-3"><p class="eyebrow text-[#52634b]">Honeywell Technologies</p><span class="tag">Selected participant</span></div>
-        <h3 id="honeywell-title" class="text-3xl leading-tight tracking-tight">HBCU Leadership<br>Summit 2026</h3>
-        <p class="mono mt-4 text-xs leading-relaxed text-[#64715c]">November 4–5, 2026 · Charlotte, NC</p>
-        <div class="my-7 border-y border-[#cbd5c6] py-5"><p class="text-4xl tracking-tight">1 of 3</p><p class="mt-2 text-xs text-[#61705a]">Students selected from Morehouse College</p></div>
-        <p class="body-copy">Selected to participate in Honeywell’s HBCU Leadership Summit, joining students and industry professionals for conversations with corporate leaders and career-development opportunities.</p>
-        <p class="mt-5 text-xs leading-relaxed text-[#61705a]">Upcoming participation. Selection recognizes an opportunity to bring my experience in experimental research, hardware development, and campus leadership into an industry setting.</p>
-      </article>
-      <article aria-labelledby="chevron-title" class="border border-[#d4dcd3] bg-white p-7 md:p-9">
-        <div class="mb-7 flex flex-wrap items-center justify-between gap-3"><p class="eyebrow text-[#52634b]">TMCF × Chevron</p><span class="tag">Participant & finance lead</span></div>
-        <h3 id="chevron-title" class="text-3xl leading-tight tracking-tight">Energy Summit 2026</h3>
-        <p class="mono mt-4 text-xs leading-relaxed text-[#64715c]">August 10–14, 2026 · Houston, TX</p>
-        <div class="my-7 grid grid-cols-2 gap-5 border-y border-[#d4dcd3] py-5">
-          <div><p class="text-3xl tracking-tight">1 of 12</p><p class="mt-2 text-xs leading-relaxed text-[#61705a]">Selected from 500+ applicants</p></div>
-          <div class="border-l border-[#d4dcd3] pl-5"><p class="text-3xl tracking-tight">~$20M</p><p class="mt-2 text-xs leading-relaxed text-[#61705a]">Additional revenue projected in the team proposal</p></div>
+      <article class="work-item" style="margin-top:54px">
+        <p class="eyebrow">Magnetometry · QuantCAD</p>
+        <h3>Getting the instrument back to work</h3>
+        <p class="work-meta">Unclassified, process-focused case study</p>
+        <p class="body-copy">The first challenge was not collecting more data. It was restoring confidence in the calibration rig. I isolated sensor readout from motor motion, checked wiring and feedback behavior, and worked through the control conflicts until the platform could complete coordinated scans again. From there, I supported field characterization and gradient geometry optimization.</p>
+        <p class="body-copy">I processed more than 9,000 thermal-test measurements and contributed to a 61% gradient improvement. This summary leaves out company plots, dimensions, magnetic layouts, and internal datasets.</p>
+        <div class="workflow" aria-label="General measurement workflow">
+          <span>Motion command</span><b aria-hidden="true">→</b><span>Sensor reading</span><b aria-hidden="true">→</b><span>Aligned data</span><b aria-hidden="true">→</b><span>Analysis & validation</span>
         </div>
-        <p class="body-copy">I served as finance lead for a team proposal addressing Chevron’s Project Kilby. I researched electricity pricing and built the financial model for additional generation capacity, connecting the technical proposal to its commercial potential.</p>
-        <p class="body-copy mt-4">Our proposal evaluated a premium-capacity offering to support data-center reliability requirements. The model projected approximately $20 million in additional revenue, giving the team a financial basis for its pitch.</p>
-        <p class="mt-5 border-l-2 border-[#9bac92] pl-4 text-xs leading-relaxed text-[#6b7667]">Case-competition result: a modeled business opportunity, not realized revenue or an implemented commercial project.</p>
       </article>
-    </div>
-  </section>
-  <!-- 06 / EDUCATION & LEADERSHIP. No academic average is included or linked. -->
-  <section id="about" aria-labelledby="about-title" class="grid gap-10 border-t border-[#bbc6b9] py-20 lg:grid-cols-[.75fr_1.5fr] lg:gap-20">
-    <div><p class="eyebrow mb-4 text-[#6a7867]">04 / Background</p><h2 id="about-title" class="section-title">Learning deeply.<br>Leading through<br>service.</h2><p class="body-copy mt-6 max-w-sm">My work connects curiosity about physical systems with a practical commitment to the people who use them.</p></div>
-    <ol class="border-l border-[#cbd5c6] pl-7 md:pl-10">
-      <li class="relative pb-10"><span aria-hidden="true" class="absolute -left-[33px] top-1 h-2 w-2 rounded-full bg-[#6a805d] md:-left-[45px]"></span><p class="eyebrow mb-3 text-[#708066]">Expected May 2029</p><h3 class="text-2xl tracking-tight">Morehouse College</h3><p class="mt-2 text-sm font-medium">B.S. in Applied Physics</p><p class="body-copy">Dual-Degree Engineering Track · Atlanta, GA</p><p class="mt-4 text-sm leading-relaxed text-[#61705a]">Howard Thurman Honors Scholar. Building a foundation in mechanics, mathematics, engineering design, and experimental research.</p></li>
-      <li class="relative border-t border-[#d4dcd3] pt-8"><span aria-hidden="true" class="absolute -left-[33px] top-9 h-2 w-2 rounded-full bg-[#6a805d] md:-left-[45px]"></span><p class="eyebrow mb-3 text-[#708066]">June 2026–present</p><h3 class="text-2xl tracking-tight">NSBE, AUC Chapter</h3><p class="mt-2 text-sm font-medium">Telecommunications Chairperson</p><p class="body-copy mt-4">I lead digital communications and technical outreach, using engagement metrics to guide event promotion and coordinated content. Social engagement grew from approximately 2,300 to 3,700 interactions, connecting more students with engineering opportunities and chapter programming.</p><div class="mt-5 flex items-baseline gap-4"><span class="text-2xl tracking-tight">2,300 <span class="px-2 text-[#839479]">→</span> 3,700</span><span class="text-xs text-[#65765c]">social interactions</span></div></li>
-    </ol>
-  </section>
-  <!-- CONTACT -->
-  <section id="contact" aria-labelledby="contact-title" class="mb-12 bg-[#293d31] px-7 py-12 text-[#f5f7f1] md:p-12">
-    <div class="grid gap-8 md:grid-cols-[1.4fr_1fr] md:items-end"><div><p class="eyebrow mb-5 text-[#c2d0b9]">05 / Let’s connect</p><h2 id="contact-title" class="section-title">Let’s build something<br>worth measuring.</h2><p class="mt-5 max-w-lg text-sm leading-relaxed text-[#cfdbca]">For conversations about experimental physics, hardware R&D, sensing, and the software that connects them.</p></div><div class="md:pl-8"><a href="mailto:evankinsel25@gmail.com" class="block break-all border-b border-[#7b8d72] pb-4 text-lg hover:text-[#d2dfc6]">evankinsel25@gmail.com <span aria-hidden="true">↗</span></a><div class="mt-6 flex gap-7 text-sm"><a href="https://www.linkedin.com/in/EvanKinsel" target="_blank" rel="noopener noreferrer" class="hover:underline">LinkedIn ↗</a><a href="https://github.com/evankinsel" target="_blank" rel="noopener noreferrer" class="hover:underline">GitHub ↗</a></div></div></div>
-  </section>
-</main>
-<footer class="mx-auto flex max-w-[1240px] flex-wrap items-center justify-between gap-4 px-6 pb-8 text-[11px] text-[#6c7965] md:px-10"><p>© <span id="year">2026</span> Evan Kinsel</p><p class="mono">Physics in practice.</p><a href="#home" class="no-print hover:underline">Back to top ↑</a></footer>
-<script>
-  // Accessible mobile navigation; links still work without JavaScript on desktop.
-  const toggle = document.getElementById('menu-toggle');
-  const menu = document.getElementById('mobile-menu');
-  function closeMenu() { menu.hidden = true; toggle.setAttribute('aria-expanded', 'false'); }
-  toggle.addEventListener('click', () => { const open = toggle.getAttribute('aria-expanded') === 'true'; menu.hidden = open; toggle.setAttribute('aria-expanded', String(!open)); });
-  menu.addEventListener('click', event => { if(event.target.closest('a')) closeMenu(); });
-  document.addEventListener('keydown', event => { if(event.key === 'Escape' && !menu.hidden) { closeMenu(); toggle.focus(); } });
-  window.matchMedia('(min-width: 768px)').addEventListener('change', event => { if(event.matches) closeMenu(); });
-  document.getElementById('year').textContent = new Date().getFullYear();
-  // Keep the current section apparent without interfering with normal anchor navigation.
-  if ('IntersectionObserver' in window) {
-    const links = [...document.querySelectorAll('.nav-link')];
-    const observer = new IntersectionObserver(entries => { entries.forEach(entry => { if(entry.isIntersecting) links.forEach(link => { if(link.hash === '#' + entry.target.id) link.setAttribute('aria-current', 'location'); else link.removeAttribute('aria-current'); }); }); }, {rootMargin:'-15% 0px -65% 0px',threshold:0});
-    document.querySelectorAll('main > section').forEach(section => observer.observe(section));
-  }
-</script>
+    </section>
+
+    <section id="projects" aria-labelledby="projects-title">
+      <div class="section-head">
+        <p class="section-label">Small tools, real bottlenecks</p>
+        <div>
+          <h2 id="projects-title">Things I’m building outside the lab</h2>
+          <p class="section-lede">These open-source projects grew from practical gaps in hardware testing: raw files that take too long to interpret, or spatial measurements that are hard to picture.</p>
+        </div>
+      </div>
+      <div class="project-list">
+        <article class="project">
+          <h3>MagPlotter</h3>
+          <div>
+            <p>A Python workflow for cleaning magnetometer CSV logs and turning spatial scans into engineering metrics. It calculates circular statistics and heading drift, interpolates field grids with SciPy, and reports peak field, uniformity, magnetic center, and 180° symmetry.</p>
+            <div class="tags" aria-label="MagPlotter technologies"><span>Python</span><span>NumPy</span><span>SciPy</span><span>Matplotlib</span></div>
+          </div>
+          <a href="https://github.com/evankinsel/magplotter" target="_blank" rel="noopener noreferrer">View repository ↗</a>
+        </article>
+        <article class="project">
+          <h3>Desktop 3D LiDAR</h3>
+          <div>
+            <p>An ESP32 scanner that brings distance and orientation data into a live point cloud. I’m prototyping coordinate capture, a serial pipeline to Python and Open3D, voxel downsampling, and .PLY export.</p>
+            <div class="tags" aria-label="LiDAR technologies"><span>ESP32</span><span>VL53L0X</span><span>BNO055</span><span>Open3D</span></div>
+          </div>
+          <a href="https://github.com/evankinsel/lidar" target="_blank" rel="noopener noreferrer">View repository ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section aria-labelledby="community-title">
+      <div class="section-head">
+        <p class="section-label">Outside the lab</p>
+        <div>
+          <h2 id="community-title">Learning with people, too</h2>
+          <p class="section-lede">Engineering is a team activity. I like being in rooms where students can compare paths, ask better questions, and see what different industries are working on.</p>
+        </div>
+      </div>
+      <div class="summit-grid">
+        <article class="summit">
+          <p class="eyebrow">Selected participant · November 4-5, 2026</p>
+          <h3>Honeywell Technologies HBCU Leadership Summit</h3>
+          <p class="summit-meta">One of three Morehouse students selected</p>
+          <p>Selected to join students and industry professionals for conversations with Honeywell leaders and career-development sessions.</p>
+        </article>
+        <article class="summit">
+          <p class="eyebrow">Participant & finance lead · August 2026</p>
+          <h3>TMCF × Chevron Energy Summit</h3>
+          <p class="summit-meta">Team case competition · Project Kilby</p>
+          <p>I researched electricity pricing and built the financial model for a team proposal on additional generation capacity. The team modeled roughly $20 million in potential revenue; this was a case-study projection, not realized company revenue.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="background" aria-labelledby="background-title">
+      <div class="section-head">
+        <p class="section-label">A little more about me</p>
+        <div>
+          <h2 id="background-title">Physics is my major. Service is part of the work.</h2>
+          <p class="section-lede">I’m learning to make careful technical work useful to the people around me, whether that means writing a lab procedure, sharing an opportunity, or helping a chapter communicate more clearly.</p>
+        </div>
+      </div>
+      <div class="background">
+        <p class="section-label">School & leadership</p>
+        <div>
+          <article class="background-group">
+            <h3>Morehouse College</h3>
+            <p>B.S. Applied Physics · Dual-Degree Engineering Track · Expected May 2029<br>Howard Thurman Honors Scholar</p>
+          </article>
+          <article class="background-group">
+            <h3>NSBE, AUC Chapter</h3>
+            <p>Telecommunications Chairperson. I use outreach metrics to improve how we share events and engineering opportunities. Social engagement grew from approximately 2,300 to 3,700 interactions.</p>
+          </article>
+          <article class="background-group">
+            <h3>Technical toolkit</h3>
+            <div class="skills">
+              <div class="skill-group"><h3>Data & programming</h3><p>Python, NumPy, SciPy, Matplotlib, C++, Plotly.js, Open3D, Git/GitHub, LaTeX</p></div>
+              <div class="skill-group"><h3>Hardware & CAD</h3><p>ESP32, Arduino, I²C sensors, stepper and servo controls, FDM/SLA printing, Onshape, Fusion 360</p></div>
+              <div class="skill-group"><h3>Experimental labs</h3><p>Quantum optics, optical alignment, HBT arrays, SPADs, photon counting, spatial field mapping</p></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title" style="padding-top:0">
+      <div class="contact">
+        <div>
+          <p class="eyebrow" style="color:#d4c7a8">Say hello</p>
+          <h2 id="contact-title">Have a good question<br>or a thing to build?</h2>
+          <p>I’m interested in experimental physics, sensing, hardware R&D, and the software that helps instruments tell a clear story.</p>
+        </div>
+        <div class="contact-links">
+          <a href="mailto:evankinsel25@gmail.com">Email Evan ↗</a>
+          <a href="https://www.linkedin.com/in/EvanKinsel" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a href="https://github.com/evankinsel" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="wrap"><p>© 2026 Evan Kinsel · Morehouse College</p><a href="#top">Back to top ↑</a></footer>
 </body>
 </html>
