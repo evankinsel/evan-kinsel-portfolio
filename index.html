@@ -3,23 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f8f6f0">
-  <meta name="description" content="Evan Kinsel is an Applied Physics and Dual-Degree Engineering student at Morehouse College, building experimental systems across quantum optics, magnetometry, and embedded hardware.">
-  <meta property="og:title" content="Evan Kinsel | Physics in Practice">
-  <meta property="og:description" content="A hands-on path through physics, hardware, and measurement.">
-  <title>Evan Kinsel | Physics in Practice</title>
+  <meta name="theme-color" content="#20231f">
+  <meta name="description" content="Evan Kinsel’s engineering portfolio: hardware development, systems integration, testing, prototype manufacturing, and research. Applied Physics and Dual-Degree Engineering at Morehouse College.">
+  <meta property="og:title" content="Evan Kinsel | Hardware & Systems Engineering">
+  <meta property="og:description" content="Engineering experience, research, and independent hardware projects.">
+  <title>Evan Kinsel | Hardware & Systems Engineering</title>
   <style>
     :root {
-      color-scheme: light;
-      --paper: #f8f6f0;
-      --paper-deep: #eee9dc;
-      --ink: #252b24;
-      --muted: #62685e;
-      --line: #d7d2c5;
-      --green: #496b52;
-      --green-light: #e4e9df;
-      --rust: #ba6846;
-      --rust-light: #f2e4d9;
+      color-scheme: dark;
+      --paper: #20231f;
+      --paper-deep: #2c3029;
+      --ink: #f2efe6;
+      --muted: #c4c5bb;
+      --line: #51564b;
+      --green: #bbcba5;
+      --green-light: #30392b;
+      --rust: #dfb497;
+      --rust-light: #3c3028;
       --serif: Georgia, "Times New Roman", serif;
       --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       --page: 1080px;
@@ -39,20 +39,17 @@
     .nav { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 22px; font-size: 13px; }
     .nav a { text-decoration: none; color: var(--muted); }
     .nav a:hover { color: var(--ink); }
-    .hero { display: grid; grid-template-columns: 1.3fr .7fr; align-items: center; gap: 60px; padding-block: 82px 74px; }
+    .hero { max-width: 850px; padding-block: 82px 64px; }
     .eyebrow { margin: 0 0 14px; color: var(--green); font-size: 12px; font-weight: 650; letter-spacing: .09em; text-transform: uppercase; }
     h1, h2, h3, p { margin-top: 0; }
-    h1 { max-width: 700px; margin-bottom: 20px; font-family: var(--serif); font-size: clamp(48px, 7vw, 84px); font-weight: 400; letter-spacing: -.055em; line-height: .99; }
-    h1 em { color: var(--green); font-weight: 400; }
+    h1 { margin-bottom: 15px; font-family: var(--sans); font-size: clamp(48px, 7vw, 80px); font-weight: 650; letter-spacing: -.05em; line-height: 1.05; }
+    .hero-role { margin-bottom: 23px; color: var(--green); font-size: clamp(22px, 3vw, 30px); font-weight: 500; line-height: 1.3; }
     .intro { max-width: 620px; margin-bottom: 25px; color: var(--muted); font-size: 18px; line-height: 1.7; }
     .hero-meta { margin-bottom: 27px; color: var(--muted); font-size: 14px; }
     .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 20px; }
-    .button { display: inline-flex; align-items: center; gap: 12px; padding: 12px 17px; border: 1px solid var(--green); border-radius: 3px; background: var(--green); color: white; font-size: 14px; text-decoration: none; }
-    .button:hover { background: #38563f; color: white; }
+    .button { display: inline-flex; align-items: center; gap: 12px; padding: 12px 17px; border: 1px solid var(--green); border-radius: 3px; background: var(--green); color: #20231f; font-size: 14px; font-weight: 600; text-decoration: none; }
+    .button:hover { background: #d0dfbb; color: #20231f; }
     .quiet-link { font-size: 14px; }
-    .sketch { padding: 23px 20px 18px; border: 1px solid var(--line); border-radius: 3px; background: #f2efe7; transform: rotate(1deg); }
-    .sketch svg { display: block; width: 100%; height: auto; }
-    .sketch-note { margin: 14px 0 0; color: var(--muted); font-family: var(--serif); font-size: 16px; font-style: italic; }
     .honor-strip { display: flex; flex-wrap: wrap; gap: 9px 22px; padding: 17px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--muted); font-size: 13px; }
     .honor-strip strong { color: var(--ink); font-weight: 600; }
     section { padding-block: 74px; }
@@ -60,7 +57,7 @@
     .section-label { margin: 7px 0 0; color: var(--rust); font-size: 12px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; }
     h2 { margin-bottom: 12px; font-family: var(--serif); font-size: clamp(34px, 4.8vw, 50px); font-weight: 400; letter-spacing: -.045em; line-height: 1.05; }
     .section-lede { max-width: 650px; margin: 0; color: var(--muted); font-size: 16px; line-height: 1.75; }
-    .timeline { position: relative; margin-left: 5px; padding-left: 34px; border-left: 1px solid #b9c5b2; }
+    .timeline { position: relative; margin-left: 5px; padding-left: 34px; border-left: 1px solid var(--line); }
     .timeline-item { position: relative; display: grid; grid-template-columns: 190px 1fr; gap: 25px; padding: 0 0 43px; }
     .timeline-item:last-child { padding-bottom: 0; }
     .timeline-item::before { position: absolute; top: 5px; left: -40px; width: 11px; height: 11px; border: 2px solid var(--paper); border-radius: 50%; background: var(--rust); content: ""; box-shadow: 0 0 0 1px var(--rust); }
@@ -68,8 +65,8 @@
     .timeline-date span { display: block; margin-top: 5px; color: var(--green); font-size: 11px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
     .timeline-item h3 { margin-bottom: 4px; font-family: var(--serif); font-size: 26px; font-weight: 400; letter-spacing: -.03em; }
     .timeline-role { margin-bottom: 12px; color: var(--green); font-size: 14px; font-weight: 600; }
-    .timeline-item p:last-child { max-width: 650px; margin-bottom: 0; color: var(--muted); font-size: 15px; line-height: 1.7; }
-    .callout { display: inline-block; margin-top: 13px; padding: 7px 10px; border-radius: 2px; background: var(--rust-light); color: #75452f; font-size: 12px; }
+    .timeline-item p:not(.timeline-role) { max-width: 650px; margin-bottom: 0; color: var(--muted); font-size: 15px; line-height: 1.7; }
+    .callout { display: inline-block; margin-top: 13px; padding: 7px 10px; border-radius: 2px; background: var(--rust-light); color: #edc8ad; font-size: 12px; }
     .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 55px; }
     .work-item { padding-top: 20px; border-top: 1px solid var(--line); }
     .work-item h3 { margin-bottom: 7px; font-family: var(--serif); font-size: 29px; font-weight: 400; letter-spacing: -.03em; }
@@ -86,7 +83,7 @@
     .poster img { display: block; width: 100%; max-height: 520px; object-fit: contain; object-position: top; }
     .record { display: flex; justify-content: flex-end; margin-top: 13px; font-size: 13px; }
     .workflow { display: flex; flex-wrap: wrap; align-items: stretch; gap: 7px; margin-top: 22px; }
-    .workflow span { flex: 1 1 120px; display: flex; align-items: center; justify-content: center; min-height: 65px; padding: 10px; background: var(--green-light); color: #344e39; text-align: center; font-size: 13px; line-height: 1.4; }
+    .workflow span { flex: 1 1 120px; display: flex; align-items: center; justify-content: center; min-height: 65px; padding: 10px; background: var(--green-light); color: #d4dfc8; text-align: center; font-size: 13px; line-height: 1.4; }
     .workflow b { align-self: center; color: var(--rust); font-size: 17px; }
     .project-list { border-top: 1px solid var(--line); }
     .project { display: grid; grid-template-columns: 210px 1fr 145px; gap: 25px; align-items: start; padding: 24px 0; border-bottom: 1px solid var(--line); }
@@ -108,7 +105,7 @@
     .skill-group { padding: 19px; background: var(--paper-deep); }
     .skill-group h3 { margin-bottom: 12px; color: var(--green); font-size: 14px; }
     .skill-group p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.8; }
-    .contact { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 35px; padding: 35px; background: var(--green); color: #fbf9f3; }
+    .contact { display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 35px; padding: 35px; background: #30392b; color: var(--ink); border: 1px solid var(--line); }
     .contact h2 { margin-bottom: 10px; font-size: clamp(32px, 4vw, 44px); }
     .contact p { margin: 0; color: #e1e9dd; font-size: 14px; line-height: 1.6; }
     .contact-links { display: flex; flex-wrap: wrap; gap: 18px; font-size: 14px; }
@@ -119,8 +116,7 @@
       .wrap { width: min(calc(100% - 30px), var(--page)); }
       .topbar-inner { align-items: flex-start; flex-direction: column; justify-content: center; gap: 12px; padding-block: 15px; }
       .nav { justify-content: flex-start; gap: 9px 17px; font-size: 12px; }
-      .hero { grid-template-columns: 1fr; gap: 34px; padding-block: 55px 45px; }
-      .sketch { max-width: 440px; }
+      .hero { padding-block: 55px 45px; }
       section { padding-block: 55px; }
       .section-head, .background { grid-template-columns: 1fr; gap: 12px; }
       .section-label { margin-top: 0; }
@@ -140,10 +136,10 @@
     <div class="wrap topbar-inner">
       <a class="brand" href="#top">Evan Kinsel<span>.</span></a>
       <nav class="nav" aria-label="Main navigation">
-        <a href="#journey">My path</a>
-        <a href="#work">Research & work</a>
+        <a href="#journey">Experience</a>
+        <a href="#work">Engineering & research</a>
         <a href="#projects">Projects</a>
-        <a href="#background">A little more</a>
+        <a href="#background">Background</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -151,34 +147,16 @@
   <main id="top" class="wrap">
     <section class="hero" aria-labelledby="hero-title">
       <div>
-        <p class="eyebrow">Applied physics student · Morehouse College</p>
-        <h1 id="hero-title">I like figuring out how the physical world <em>works.</em></h1>
-        <p class="intro">I’m Evan, an Applied Physics and Dual-Degree Engineering student. I build and test instruments that turn questions about light, magnetism, and motion into measurements we can use.</p>
-        <p class="hero-meta">Atlanta, Georgia · Class of 2029</p>
+        <p class="eyebrow">Engineering portfolio</p>
+        <h1 id="hero-title">Evan Kinsel</h1>
+        <p class="hero-role">Hardware & Systems Engineer</p>
+        <p class="intro">I work on hardware development, sensor integration, automated testing, and prototype manufacturing. My experience also includes technical analysis, procurement planning, market assessment, and laboratory documentation.</p>
+        <p class="hero-meta">Morehouse College · Atlanta, Georgia</p>
         <div class="actions">
-          <a class="button" href="#journey">A few stops along the way <span aria-hidden="true">↓</span></a>
-          <a class="quiet-link" href="https://github.com/evankinsel" target="_blank" rel="noopener noreferrer">Find me on GitHub ↗</a>
+          <a class="button" href="#journey">View experience <span aria-hidden="true">↓</span></a>
+          <a class="quiet-link" href="https://github.com/evankinsel" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
         </div>
       </div>
-      <figure class="sketch">
-        <svg viewBox="0 0 330 210" role="img" aria-labelledby="sketch-title sketch-desc">
-          <title id="sketch-title">A small drawing of a light measurement setup</title>
-          <desc id="sketch-desc">A laser beam meets a beam splitter and travels toward two photon detectors.</desc>
-          <path d="M24 103 C57 101 72 104 105 102" fill="none" stroke="#ba6846" stroke-width="3" stroke-linecap="round" />
-          <path d="M106 80 L128 102 L106 124 L84 102 Z" fill="#f8f6f0" stroke="#496b52" stroke-width="2.5" stroke-linejoin="round" />
-          <path d="M128 102 C164 102 182 101 211 101" fill="none" stroke="#ba6846" stroke-width="3" stroke-linecap="round" />
-          <path d="M105 80 C142 56 165 46 203 43" fill="none" stroke="#ba6846" stroke-width="2.7" stroke-linecap="round" />
-          <rect x="212" y="82" width="74" height="38" rx="4" fill="#e4e9df" stroke="#496b52" stroke-width="2" />
-          <rect x="206" y="25" width="74" height="38" rx="4" fill="#f2e4d9" stroke="#ba6846" stroke-width="2" />
-          <circle cx="225" cy="101" r="5" fill="#496b52" /><circle cx="219" cy="44" r="5" fill="#ba6846" />
-          <text x="24" y="88" fill="#62685e" font-size="12" font-family="system-ui">light in</text>
-          <text x="91" y="153" fill="#62685e" font-size="12" font-family="system-ui">split</text>
-          <text x="219" y="140" fill="#62685e" font-size="11" font-family="system-ui">detector A</text>
-          <text x="212" y="80" fill="#62685e" font-size="11" font-family="system-ui">detector B</text>
-          <path d="M38 178 C89 170 117 185 162 172 S237 166 288 175" fill="none" stroke="#89977e" stroke-width="1.5" stroke-dasharray="3 6" stroke-linecap="round" />
-        </svg>
-        <figcaption class="sketch-note">A lot of the fun is getting the setup to behave.</figcaption>
-      </figure>
     </section>
 
     <div class="honor-strip" aria-label="Honors">
@@ -189,7 +167,7 @@
 
     <section id="journey" aria-labelledby="journey-title">
       <div class="section-head">
-        <p class="section-label">How I got here</p>
+        <p class="section-label">Experience</p>
         <div>
           <h2 id="journey-title">My experience</h2>
           <p class="section-lede">A look at my engineering projects, internship, and research at Morehouse.</p>
@@ -201,7 +179,7 @@
           <div>
             <h3>Pothole repair robot</h3>
             <p class="timeline-role">Gainesville High School · PLTW Honors Engineering</p>
-            <p>My capstone team designed and built an autonomous pothole repair robot. I worked through the gap between a promising concept and a machine we could actually test, including design tradeoffs and a lower-cost build plan.</p>
+            <p>My capstone team designed and built an autonomous pothole repair robot. I contributed to design decisions, prototype testing, and a lower-cost build plan.</p>
             <span class="callout">Projected build cost reduced 78.7%</span>
           </div>
         </article>
@@ -228,40 +206,13 @@
 
     <section id="work" aria-labelledby="work-title">
       <div class="section-head">
-        <p class="section-label">A closer look</p>
+        <p class="section-label">Selected work</p>
         <div>
-          <h2 id="work-title">Research & engineering work</h2>
-          <p class="section-lede">I care about the whole chain: the physical setup, the control and acquisition, and the analysis that tells us what happened.</p>
+          <h2 id="work-title">Engineering & research</h2>
+          <p class="section-lede">Hardware development at QuantCAD and experimental research at Morehouse College.</p>
         </div>
       </div>
-      <div class="work-grid">
-        <article class="work-item">
-          <p class="eyebrow">Quantum optics · Morehouse</p>
-          <h3>Following photons to raw bits</h3>
-          <p class="work-meta">405 nm diode laser · HBT measurement · Swabian Instruments time tagger</p>
-          <p class="body-copy">I swept laser drive current from 15 to 34 mA at 20, 25, and 30 °C, using a 50/50 beam splitter and two single-photon avalanche detectors. Repeated runs and laser-off baselines helped separate the measurement from setup drift and background counts.</p>
-          <div class="fact-line">
-            <div class="fact"><strong>64.14M</strong><span>raw bits evaluated</span></div>
-            <div class="fact"><strong>50.0033%</strong><span>observed fraction of ones</span></div>
-          </div>
-          <details>
-            <summary>More on the analysis and its limits</summary>
-            <div class="body-copy">
-              <p>I examined detection rates, second-order intensity correlations g²(τ), and interarrival-time distributions. Held-out prediction checks stayed close to 50% for the methods tested.</p>
-              <p>These results characterize this source and extraction procedure. Bit balance and the tested baselines do not establish cryptographic security or certify entropy.</p>
-            </div>
-          </details>
-          <h4>Writing the next student’s lab guide</h4>
-          <p class="body-copy">Alongside the research, I wrote laboratory manuals for the optics kit for students in HPHY 300-level courses and above. The Michelson interferometry and Hanbury Brown–Twiss guides connect the physics of light and quantum optics to practical experiments, with setup and alignment instructions, detector configuration, safety guidance, data collection, and analysis. I developed them to help junior and senior physics students understand both how to run the equipment and what their measurements mean.</p>
-        </article>
-        <div>
-          <figure class="poster">
-            <img src="evan-kinsel-hbt-poster-preview.webp" alt="Research poster: Thermal and Temporal Characterization of a 405 nm Diode Laser for Random Bit Generation" width="1800" height="1393" loading="lazy">
-          </figure>
-          <p class="record"><a href="https://doi.org/10.5281/zenodo.23651002" target="_blank" rel="noopener noreferrer">View the open-science record ↗</a></p>
-        </div>
-      </div>
-      <article class="work-item" style="margin-top:54px">
+      <article class="work-item" style="margin-bottom:54px">
         <p class="eyebrow">Hardware R&D · QuantCAD</p>
         <h3>Hardware, manufacturing & product development</h3>
         <p class="work-meta">Quantum Systems Engineering Intern · June - August 2026</p>
@@ -283,14 +234,42 @@
           <span>Motion command</span><b aria-hidden="true">→</b><span>Sensor reading</span><b aria-hidden="true">→</b><span>Aligned data</span><b aria-hidden="true">→</b><span>Analysis & validation</span>
         </div>
       </article>
+      <div class="work-grid">
+        <article class="work-item">
+          <p class="eyebrow">Quantum optics · Morehouse</p>
+          <h3>Diode laser characterization & raw bit extraction</h3>
+          <p class="work-meta">405 nm diode laser · HBT measurement · Swabian Instruments time tagger</p>
+          <p class="body-copy">I swept laser drive current from 15 to 34 mA at 20, 25, and 30 °C, using a 50/50 beam splitter and two single-photon avalanche detectors. Repeated runs and laser-off baselines helped separate the measurement from setup drift and background counts.</p>
+          <div class="fact-line">
+            <div class="fact"><strong>64.14M</strong><span>raw bits evaluated</span></div>
+            <div class="fact"><strong>50.0033%</strong><span>observed fraction of ones</span></div>
+          </div>
+          <details>
+            <summary>More on the analysis and its limits</summary>
+            <div class="body-copy">
+              <p>I examined detection rates, second-order intensity correlations g²(τ), and interarrival-time distributions. Held-out prediction checks stayed close to 50% for the methods tested.</p>
+              <p>These results characterize this source and extraction procedure. Bit balance and the tested baselines do not establish cryptographic security or certify entropy.</p>
+            </div>
+          </details>
+          <h4>Upper-level optics laboratory manuals</h4>
+          <p class="body-copy">Alongside the research, I wrote laboratory manuals for the optics kit for students in HPHY 300-level courses and above. The Michelson interferometry and Hanbury Brown–Twiss guides connect the physics of light and quantum optics to practical experiments, with setup and alignment instructions, detector configuration, safety guidance, data collection, and analysis. I developed them to help junior and senior physics students understand both how to run the equipment and what their measurements mean.</p>
+        </article>
+        <div>
+          <figure class="poster">
+            <img src="evan-kinsel-hbt-poster-preview.webp" alt="Research poster: Thermal and Temporal Characterization of a 405 nm Diode Laser for Random Bit Generation" width="1800" height="1393" loading="lazy">
+          </figure>
+          <p class="record"><a href="https://doi.org/10.5281/zenodo.23651002" target="_blank" rel="noopener noreferrer">View the open-science record ↗</a></p>
+        </div>
+      </div>
+
     </section>
 
     <section id="projects" aria-labelledby="projects-title">
       <div class="section-head">
-        <p class="section-label">Small tools, real bottlenecks</p>
+        <p class="section-label">Open source</p>
         <div>
-          <h2 id="projects-title">Things I’m building outside the lab</h2>
-          <p class="section-lede">These open-source projects grew from practical gaps in hardware testing: raw files that take too long to interpret, or spatial measurements that are hard to picture.</p>
+          <h2 id="projects-title">Independent projects</h2>
+          <p class="section-lede">Software and embedded hardware for sensor testing, data analysis, and spatial measurement.</p>
         </div>
       </div>
       <div class="project-list">
@@ -315,10 +294,10 @@
 
     <section aria-labelledby="community-title">
       <div class="section-head">
-        <p class="section-label">Outside the lab</p>
+        <p class="section-label">Industry programs</p>
         <div>
-          <h2 id="community-title">Learning with people, too</h2>
-          <p class="section-lede">Engineering is a team activity. I like being in rooms where students can compare paths, ask better questions, and see what different industries are working on.</p>
+          <h2 id="community-title">Summits & professional development</h2>
+          <p class="section-lede">Industry programs covering engineering, business, and leadership.</p>
         </div>
       </div>
       <div class="summit-grid">
@@ -339,10 +318,10 @@
 
     <section id="background" aria-labelledby="background-title">
       <div class="section-head">
-        <p class="section-label">A little more about me</p>
+        <p class="section-label">Background</p>
         <div>
-          <h2 id="background-title">Physics is my major. Service is part of the work.</h2>
-          <p class="section-lede">I’m learning to make careful technical work useful to the people around me, whether that means writing a lab procedure, sharing an opportunity, or helping a chapter communicate more clearly.</p>
+          <h2 id="background-title">Education & leadership</h2>
+          <p class="section-lede">I study Applied Physics on the Dual-Degree Engineering track at Morehouse College and serve as Telecommunications Chairperson for the AUC chapter of NSBE.</p>
         </div>
       </div>
       <div class="background">
@@ -359,9 +338,9 @@
           <article class="background-group">
             <h3>Technical toolkit</h3>
             <div class="skills">
-              <div class="skill-group"><h3>Data & programming</h3><p>Python, NumPy, SciPy, Matplotlib, C++, Plotly.js, Open3D, Git/GitHub, LaTeX</p></div>
               <div class="skill-group"><h3>Hardware & CAD</h3><p>ESP32, Arduino, I²C sensors, stepper and servo controls, FDM/SLA printing, Onshape, Fusion 360</p></div>
               <div class="skill-group"><h3>Experimental labs</h3><p>Quantum optics, optical alignment, HBT arrays, SPADs, photon counting, spatial field mapping</p></div>
+              <div class="skill-group"><h3>Data & programming</h3><p>Python, NumPy, SciPy, Matplotlib, C++, Plotly.js, Open3D, Git/GitHub, LaTeX</p></div>
             </div>
           </article>
         </div>
@@ -371,9 +350,9 @@
     <section id="contact" aria-labelledby="contact-title" style="padding-top:0">
       <div class="contact">
         <div>
-          <p class="eyebrow" style="color:#d4c7a8">Say hello</p>
-          <h2 id="contact-title">Have a good question<br>or a thing to build?</h2>
-          <p>I’m interested in experimental physics, sensing, hardware R&D, and the software that helps instruments tell a clear story.</p>
+          <p class="eyebrow" style="color:#d4c7a8">Contact</p>
+          <h2 id="contact-title">Get in touch</h2>
+          <p>Contact me about engineering opportunities, hardware development, or research collaborations.</p>
         </div>
         <div class="contact-links">
           <a href="mailto:evankinsel25@gmail.com">Email Evan ↗</a>
