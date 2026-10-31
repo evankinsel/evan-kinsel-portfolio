@@ -191,8 +191,8 @@
       <div class="section-head">
         <p class="section-label">How I got here</p>
         <div>
-          <h2 id="journey-title">Three projects, one growing question.</h2>
-          <p class="section-lede">I started with a school build, then stepped into magnetometry, and found my way to experimental optics. Each stop gave me a new kind of problem to learn from.</p>
+          <h2 id="journey-title">My experience</h2>
+          <p class="section-lede">A look at my engineering projects, internship, and research at Morehouse.</p>
         </div>
       </div>
       <div class="timeline">
@@ -210,8 +210,8 @@
           <div>
             <h3>QuantCAD LLC</h3>
             <p class="timeline-role">Quantum Systems Engineering Intern · Chicago, Illinois</p>
-            <p>I brought a broken calibration setup back to useful measurements by tracing motor, cable, sensor, and feedback conflicts. I then worked on magnetic-field mapping and gradient design, processing more than 9,000 thermal-test data points.</p>
-            <span class="callout">Gradient geometry improved 61% · process details kept private</span>
+            <p class="body-copy">My internship spanned hardware testing, magnetic-field analysis, prototype manufacturing, and commercial assessment. I restored a calibration rig, contributed to gradient design, and supported thermal testing. I also wrote a market viability assessment for the SAMMY-T quantum magnetometer, worked on bill-of-materials optimization and procurement planning, and made small front-end GUI updates.</p>
+            <span class="callout">61% gradient improvement · 9,000+ thermal-test measurements</span>
           </div>
         </article>
         <article class="timeline-item">
@@ -219,7 +219,7 @@
           <div>
             <h3>M.O.R.E. Lab, Morehouse College</h3>
             <p class="timeline-role">Undergraduate Research Assistant · Quantum optics</p>
-            <p>I conceived and led a study of a 405 nm diode laser with a two-detector Hanbury Brown–Twiss setup. The work connects optical alignment and photon timing to reproducible analysis of raw bit streams.</p>
+            <p class="body-copy">I conceived and led a study of a 405 nm diode laser with a two-detector Hanbury Brown–Twiss setup, connecting optical alignment and photon timing to analysis of raw bit streams. Alongside my research, I wrote optics-kit laboratory manuals for junior and senior physics students in HPHY 300-level courses and above.</p>
             <span class="callout">Poster presented at Morehouse Fall 2026 STEM Research Symposium</span>
           </div>
         </article>
@@ -249,9 +249,10 @@
             <div class="body-copy">
               <p>I examined detection rates, second-order intensity correlations g²(τ), and interarrival-time distributions. Held-out prediction checks stayed close to 50% for the methods tested.</p>
               <p>These results characterize this source and extraction procedure. Bit balance and the tested baselines do not establish cryptographic security or certify entropy.</p>
-              <p>I also authored laboratory procedures to support repeatable undergraduate optics experiments.</p>
             </div>
           </details>
+          <h4>Writing the next student’s lab guide</h4>
+          <p class="body-copy">Alongside the research, I wrote laboratory manuals for the optics kit for students in HPHY 300-level courses and above. The Michelson interferometry and Hanbury Brown–Twiss guides connect the physics of light and quantum optics to practical experiments, with setup and alignment instructions, detector configuration, safety guidance, data collection, and analysis. I developed them to help junior and senior physics students understand both how to run the equipment and what their measurements mean.</p>
         </article>
         <div>
           <figure class="poster">
@@ -261,11 +262,23 @@
         </div>
       </div>
       <article class="work-item" style="margin-top:54px">
-        <p class="eyebrow">Magnetometry · QuantCAD</p>
-        <h3>Getting the instrument back to work</h3>
-        <p class="work-meta">Unclassified, process-focused case study</p>
-        <p class="body-copy">The first challenge was not collecting more data. It was restoring confidence in the calibration rig. I isolated sensor readout from motor motion, checked wiring and feedback behavior, and worked through the control conflicts until the platform could complete coordinated scans again. From there, I supported field characterization and gradient geometry optimization.</p>
-        <p class="body-copy">I processed more than 9,000 thermal-test measurements and contributed to a 61% gradient improvement. This summary leaves out company plots, dimensions, magnetic layouts, and internal datasets.</p>
+        <p class="eyebrow">Hardware R&D · QuantCAD</p>
+        <h3>Hardware, manufacturing & product development</h3>
+        <p class="work-meta">Quantum Systems Engineering Intern · June - August 2026</p>
+        <div class="work-grid">
+          <div>
+            <h4>Measurement & validation</h4>
+            <p class="body-copy">I restored a nonfunctional rotational calibration rig by isolating sensor readout from motor motion and troubleshooting cabling, feedback, and control conflicts. The recovered platform supported automated 360° scans and more than 2,500 aligned three-axis measurements. I used Python to process and interpret the readings, contributed to a 61% magnetic-field gradient improvement, and supported thermal testing across more than 9,000 measurement points.</p>
+            <h4>Prototype manufacturing</h4>
+            <p class="body-copy">I used agile methods to organize short design, 3D-print, test, and revision cycles for fixtures, sensor mounts, and protective packaging. For a PCB shipment, I developed four packaging prototypes, performed drop testing, and delivered a carrier for 25 populated boards destined for a national laboratory.</p>
+          </div>
+          <div>
+            <h4>Market assessment & procurement</h4>
+            <p class="body-copy">I wrote a market viability assessment for the SAMMY-T quantum magnetometer, examining potential applications and customer needs. I also worked on bill-of-materials optimization and procurement planning, comparing component specifications, supplier options, and pricing while supporting planning around ITAR compliance requirements.</p>
+            <h4>Interface support</h4>
+            <p class="body-copy">I also contributed small front-end updates to a graphical user interface alongside the hardware work.</p>
+          </div>
+        </div>
         <div class="workflow" aria-label="General measurement workflow">
           <span>Motion command</span><b aria-hidden="true">→</b><span>Sensor reading</span><b aria-hidden="true">→</b><span>Aligned data</span><b aria-hidden="true">→</b><span>Analysis & validation</span>
         </div>
